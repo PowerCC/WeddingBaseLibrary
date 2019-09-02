@@ -500,12 +500,12 @@ func appIconBadgeNumber() -> Int {
 
 // MARK: - 更新App图标右上角数字
 
-func updateAppIconBadgeNumber(_ number: Int) {
-    let app = UIApplication.shared
-    let settings = UIUserNotificationSettings(types: UIUserNotificationType.badge, categories: nil)
-    app.registerUserNotificationSettings(settings)
-    app.applicationIconBadgeNumber = number
-}
+//func updateAppIconBadgeNumber(_ number: Int) {
+//    let app = UIApplication.shared
+//    let settings = UIUserNotificationSettings(types: UIUserNotificationType.badge, categories: nil)
+//    app.registerUserNotificationSettings(settings)
+//    app.applicationIconBadgeNumber = number
+//}
 
 // MARK: - 从 Storyboard 获得 ViewController 实例
 
