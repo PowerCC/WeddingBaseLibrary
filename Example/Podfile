@@ -1,0 +1,6 @@
+use_frameworks!
+target 'WeddingBaseLibrary_Tests' do
+  pod 'WeddingBaseLibrary', :path => '../'
+  
+  
+end
