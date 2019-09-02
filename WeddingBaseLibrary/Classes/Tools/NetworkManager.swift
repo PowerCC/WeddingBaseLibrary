@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class NetworkManager {
+public class NetworkManager {
     // shared instance
     static let shared = NetworkManager()
     

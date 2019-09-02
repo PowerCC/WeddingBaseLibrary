@@ -12,40 +12,39 @@ import Photos
 import UserNotifications
 
 // MARK: --------------------------------- 我是分割线 -------------------------
-
 /// AppVersion
-let APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+public let APP_VERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
 
 /// 屏幕边界尺寸
-let SCREEN_BOUNDS = UIScreen.main.bounds
+public let SCREEN_BOUNDS = UIScreen.main.bounds
 
 /// 屏幕比例
-let SCREEN_SCALE = UIScreen.main.scale
+public let SCREEN_SCALE = UIScreen.main.scale
 
 /// 等比数值320
-func SCALE_VALUE(_ value: CGFloat) -> CGFloat {
+public func SCALE_VALUE(_ value: CGFloat) -> CGFloat {
     return SCREEN_BOUNDS.width * value / 320.0
 }
 
 /// 等比数值375
-func SCALE_375_VALUE(_ value: CGFloat) -> CGFloat {
+public func SCALE_375_VALUE(_ value: CGFloat) -> CGFloat {
     return SCREEN_BOUNDS.width * value / 375.0
 }
 
-func SCALE_HEIGHT_4_TO_3(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
+public func SCALE_HEIGHT_4_TO_3(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
     return width / 4 * 3
 }
 
-func SCALE_HEIGHT_3_TO_2(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
+public func SCALE_HEIGHT_3_TO_2(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
     return width / 3 * 2
 }
 
-func SCALE_HEIGHT_3_TO_1(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
+public func SCALE_HEIGHT_3_TO_1(width: CGFloat = SCREEN_BOUNDS.width) -> CGFloat {
     return width / 3
 }
 
 /// 是否 iPhone X 系列（iPhone X, iPhone XR, iPhone XS, iPhone XS Max 机型）
-func isiPhoneXSeries() -> Bool {
+public func isiPhoneXSeries() -> Bool {
     _ = currentDeviceType()
 
     if iPhoneX_Series {
@@ -57,7 +56,7 @@ func isiPhoneXSeries() -> Bool {
 
 fileprivate var iPhoneX_Series: Bool = false
 
-enum DeviceType: Int {
+public enum DeviceType: Int {
     case
         /// iPhone4S 机型（@2x图）
         iPhone4S,
@@ -84,7 +83,7 @@ enum DeviceType: Int {
         nonSupport
 }
 
-func currentDeviceType() -> DeviceType {
+public func currentDeviceType() -> DeviceType {
     iPhoneX_Series = false
 
     if __CGSizeEqualToSize(UIScreen.main.bounds.size, CGSize(width: 320.0, height: 480.0)) {
@@ -123,52 +122,52 @@ func currentDeviceType() -> DeviceType {
     return DeviceType.nonSupport
 }
 
-var NAV_BAR_MAX_Y: CGFloat = 0.0
-var NAV_BAR_HEIGHT: CGFloat = 0.0
-var NAV_LARGE_TITLE_BAR_MAX_Y: CGFloat = 0.0
-var MAIN_TAB_BAR_MIN_Y: CGFloat = 0.0
+public var NAV_BAR_MAX_Y: CGFloat = 0.0
+public var NAV_BAR_HEIGHT: CGFloat = 0.0
+public var NAV_LARGE_TITLE_BAR_MAX_Y: CGFloat = 0.0
+public var MAIN_TAB_BAR_MIN_Y: CGFloat = 0.0
 
-var STATUS_BAR_HEIGHT: CGFloat = 20.0
-var MAIN_TAB_BAR_HEIGHT: CGFloat = 0.0
-var SAFE_AREA_HEIGHT: CGFloat = 0.0
+public var STATUS_BAR_HEIGHT: CGFloat = 20.0
+public var MAIN_TAB_BAR_HEIGHT: CGFloat = 0.0
+public var SAFE_AREA_HEIGHT: CGFloat = 0.0
 
-var SYSTEM_FONT = "PingFangSC-Regular"
-var SYSTEM_FONT_MEDIUM = "PingFangSC-Medium"
-var SYSTEM_FONT_SEMIBOLD = "PingFangSC-Semibold"
-var SYSTEM_FONT_LIGHT = "PingFangSC-Light"
+public var SYSTEM_FONT = "PingFangSC-Regular"
+public var SYSTEM_FONT_MEDIUM = "PingFangSC-Medium"
+public var SYSTEM_FONT_SEMIBOLD = "PingFangSC-Semibold"
+public var SYSTEM_FONT_LIGHT = "PingFangSC-Light"
 
 /// 1px线
-let LINE_1PX = 1.0 / UIScreen.main.scale
+public let LINE_1PX = 1.0 / UIScreen.main.scale
 
 /// 详情页Section间距
-let DETAILVC_SECTION_GAP: CGFloat = 8.0
+public let DETAILVC_SECTION_GAP: CGFloat = 8.0
 
 /// Tableview Section Header & Footer 高度为0时 需要设置为接近于0的小数，如果设置为0则显示默认高度
-let SECTION_ZERO_HF: CGFloat = 0.001
+public let SECTION_ZERO_HF: CGFloat = 0.001
 
 // MARK: --------------------------------- 我是分割线 -------------------------
 
 /// 网络类型
-var CONNECTION_TYPE = NetworkReachabilityManager.ConnectionType.wwan
+public var CONNECTION_TYPE = NetworkReachabilityManager.ConnectionType.wwan
 
 /// 登录VC是否出现
-var LOGIN_VC_EXISTING = false
+public var LOGIN_VC_EXISTING = false
 
 /// 每页记录数（首页）
-let HOME_PAGE_SIZE = 10
+public let HOME_PAGE_SIZE = 10
 
 /// 每页记录数
-let NORMAL_PAGE_SIZE = 20
+public let NORMAL_PAGE_SIZE = 20
 
 /// IM数据是否同步完成
-var IM_SYNC_OK = false
+public var IM_SYNC_OK = false
 
 // MARK: --------------------------------- 我是分割线 -------------------------
 
 // MARK: - 查找顶层控制器、
 
 // 获取顶层控制器 根据window
-func getTopVC() -> (UIViewController?) {
+public func getTopVC() -> (UIViewController?) {
     var window = UIApplication.shared.keyWindow
     // 是否为当前显示的window
     if window?.windowLevel != UIWindow.Level.normal {
@@ -185,7 +184,7 @@ func getTopVC() -> (UIViewController?) {
 }
 
 /// 根据控制器获取 顶层控制器
-func getTopVC(withCurrentVC VC: UIViewController?) -> UIViewController? {
+public func getTopVC(withCurrentVC VC: UIViewController?) -> UIViewController? {
     if VC == nil {
         print("🌶： 找不到顶层控制器")
         return nil
@@ -209,37 +208,37 @@ func getTopVC(withCurrentVC VC: UIViewController?) -> UIViewController? {
 }
 
 /// 颜色含alpha
-func RGBA(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
+public func RGBA(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
     return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
 }
 
 // MARK: --------------------------------- 我是分割线 -------------------------
 
 /// 调试日志
-func DEBUGLOG<T>(_ message: T, file: NSString = #file, method: String = #function, line: Int = #line) {
+public func DEBUGLOG<T>(_ message: T, file: NSString = #file, method: String = #function, line: Int = #line) {
     #if DEBUG
         print("\(method)[\(line)]: \(message)")
     #endif
 }
 
 /// 调试输出
-func dPrint(_ items: Any..., separator: String = "", terminator: String = "") {
+public func dPrint(_ items: Any..., separator: String = "", terminator: String = "") {
     #if DEBUG
         print(items, separator: separator, terminator: terminator)
     #endif
 }
 
 /// 判断字符串是否为空
-func legalString(_ testStr: String?) -> Bool {
+public func legalString(_ testStr: String?) -> Bool {
     return testStr != nil && testStr!.count > 0
 }
 
-func legalNSString(_ testStr: NSString?) -> Bool {
+public func legalNSString(_ testStr: NSString?) -> Bool {
     return testStr != nil && testStr!.length > 0
 }
 
 /// 替换图片文件名，取350小图
-func handleImageName(_ urlString: String, imageWidth: CGFloat = UIScreen.main.bounds.size.width) -> String {
+public func handleImageName(_ urlString: String, imageWidth: CGFloat = UIScreen.main.bounds.size.width) -> String {
     //    #if HTTPS
     //        if urlString.hasPrefix("http://") {
     //            if let nameString = NSString(cString: urlString, encoding: String.Encoding.utf8.rawValue) {
@@ -265,7 +264,7 @@ func handleImageName(_ urlString: String, imageWidth: CGFloat = UIScreen.main.bo
 }
 
 /// 收藏数量检测 大于999的显示999+
-func collectCountCheck(count: String?) -> String? {
+public func collectCountCheck(count: String?) -> String? {
     if let ccount = count {
         if let c = Int(ccount) {
             if c > 999 {
@@ -277,7 +276,7 @@ func collectCountCheck(count: String?) -> String? {
 }
 
 // 请柬分享用默认URL
-let INVITATION_DEFAULT_ICON_URL_FOR_SHARE = "https://m.hunli.baihe.com/static/img/invitationDefault.png"
+public let INVITATION_DEFAULT_ICON_URL_FOR_SHARE = "https://m.hunli.baihe.com/static/img/invitationDefault.png"
 
 // MARK: --------------------------------- 我是分割线 -------------------------
 
@@ -289,35 +288,35 @@ let INVITATION_DEFAULT_ICON_URL_FOR_SHARE = "https://m.hunli.baihe.com/static/im
 #endif
 
 /// AppStore url
-let APP_STORE_URL = "https://itunes.apple.com/cn/app/%E7%99%BE%E5%90%88%E7%BD%91%E5%A9%9A%E7%A4%BC-%E7%94%A8%E5%BF%83%E7%9A%84%E5%A9%9A%E5%BA%86%E7%AD%96%E5%88%92%E6%9C%8D%E5%8A%A1/id1086884575?mt=8"
+public let APP_STORE_URL = "https://itunes.apple.com/cn/app/%E7%99%BE%E5%90%88%E7%BD%91%E5%A9%9A%E7%A4%BC-%E7%94%A8%E5%BF%83%E7%9A%84%E5%A9%9A%E5%BA%86%E7%AD%96%E5%88%92%E6%9C%8D%E5%8A%A1/id1086884575?mt=8"
 
 /// 默认城市（北京）
-let DEFAULT_CITY_CODE = "110000"
+public let DEFAULT_CITY_CODE = "110000"
 
 /// 全国CityCode
-let NATION_CITY_CODE = "100000"
+public let NATION_CITY_CODE = "100000"
 
 /// 默认服务电话（全国为空时用的客服电话）
-let CITY_SERVICE_NUMBER_BEIJING = "400-697-0096"
+public let CITY_SERVICE_NUMBER_BEIJING = "400-697-0096"
 
 /// 默认服务电话
-var CITY_SERVICE_NUMBER_DEFAULT = CITY_SERVICE_NUMBER_BEIJING
+public var CITY_SERVICE_NUMBER_DEFAULT = CITY_SERVICE_NUMBER_BEIJING
 
 /// 服务电话号码
-var SERVICE_PHONE_NUMBER = CITY_SERVICE_NUMBER_DEFAULT
+public var SERVICE_PHONE_NUMBER = CITY_SERVICE_NUMBER_DEFAULT
 
 /// 通知权限
-var NOTIFICATION_IS_ENABLE: Bool = false
+public var NOTIFICATION_IS_ENABLE: Bool = false
 
 /// 相机权限
-var CAMERA_STATUS: AVAuthorizationStatus = .denied
+public var CAMERA_STATUS: AVAuthorizationStatus = .denied
 
 /// 照片库权限
-var PHOTO_LIBRARY_STATUS: PHAuthorizationStatus = .denied
+public var PHOTO_LIBRARY_STATUS: PHAuthorizationStatus = .denied
 
 // MARK: - callPhoneNumber
 
-func callPhoneNumber(viewController vc: UIViewController?, number: String!) {
+public func callPhoneNumber(viewController vc: UIViewController?, number: String!) {
     if vc != nil {
         var phoneNum = NSString(cString: number, encoding: String.Encoding.utf8.rawValue)!
         if legalNSString(phoneNum) {
@@ -353,7 +352,7 @@ func callPhoneNumber(viewController vc: UIViewController?, number: String!) {
 // MARK: - 是否（北上广深）
 
 /// 是否（北上广深）
-func isBSGS(_ cityCode: String) -> Bool {
+public func isBSGS(_ cityCode: String) -> Bool {
     if cityCode.hasPrefix("110") || cityCode.hasPrefix("310") || cityCode.hasPrefix("4401") || cityCode.hasPrefix("4403") {
         return true
     }
@@ -363,7 +362,7 @@ func isBSGS(_ cityCode: String) -> Bool {
 
 // MARK: - 检测通知权限
 
-func notificationIsEnable(action: @escaping (() -> Void), ungrantedAction: @escaping (() -> Void)) {
+public func notificationIsEnable(action: @escaping (() -> Void), ungrantedAction: @escaping (() -> Void)) {
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options: [UNAuthorizationOptions.badge, UNAuthorizationOptions.sound, UNAuthorizationOptions.alert], completionHandler: { granted, _ in
         NOTIFICATION_IS_ENABLE = granted
@@ -379,7 +378,7 @@ func notificationIsEnable(action: @escaping (() -> Void), ungrantedAction: @esca
 
 // MARK: - 检测相机访问权限
 
-func cameraAuthorizationStatus(_ vc: UIViewController, action: @escaping (() -> Void)) {
+public func cameraAuthorizationStatus(_ vc: UIViewController, action: @escaping (() -> Void)) {
     let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
     CAMERA_STATUS = authStatus
 
@@ -421,7 +420,7 @@ func cameraAuthorizationStatus(_ vc: UIViewController, action: @escaping (() -> 
 
 // MARK: - 检测相册访问权限
 
-func photoLibraryAuthorizationStatus(_ vc: UIViewController, action: @escaping (() -> Void)) {
+public func photoLibraryAuthorizationStatus(_ vc: UIViewController, action: @escaping (() -> Void)) {
     let authStatus = PHPhotoLibrary.authorizationStatus()
     PHOTO_LIBRARY_STATUS = authStatus
 
@@ -463,7 +462,7 @@ func photoLibraryAuthorizationStatus(_ vc: UIViewController, action: @escaping (
 
 // MARK: - 指纹登录
 
-func loginWithTouchID() {
+public func loginWithTouchID() {
     let context = LAContext()
     let reasonString = "将使用您的TouchID登录百合婚礼"
     var error: NSError?
@@ -493,7 +492,7 @@ func loginWithTouchID() {
 
 // MARK: - 获取App图标右上角数字
 
-func appIconBadgeNumber() -> Int {
+public func appIconBadgeNumber() -> Int {
     let app = UIApplication.shared
     return app.applicationIconBadgeNumber
 }
@@ -509,7 +508,7 @@ func appIconBadgeNumber() -> Int {
 
 // MARK: - 从 Storyboard 获得 ViewController 实例
 
-func instantiateVc(_ storyboardName: String) -> UIViewController? {
+public func instantiateVc(_ storyboardName: String) -> UIViewController? {
     let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
     let vc = storyboard.instantiateInitialViewController()
     return vc
@@ -517,7 +516,7 @@ func instantiateVc(_ storyboardName: String) -> UIViewController? {
 
 // MARK: - 根据 ID 从 Storyboard 获得 ViewController 实例
 
-func instantiateVcWithID(_ storyboardName: String, storyboardID: String) -> UIViewController {
+public func instantiateVcWithID(_ storyboardName: String, storyboardID: String) -> UIViewController {
     let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: storyboardID)
     return vc
@@ -525,7 +524,7 @@ func instantiateVcWithID(_ storyboardName: String, storyboardID: String) -> UIVi
 
 // MARK: - 修复像素狭缝
 
-func fixSlitWith(_ containerWidth: CGFloat, colCount: CGFloat, space: CGFloat) -> CGFloat {
+public func fixSlitWith(_ containerWidth: CGFloat, colCount: CGFloat, space: CGFloat) -> CGFloat {
     let totalSpace: CGFloat = (colCount - 1) * space // 总共留出的距离
     let itemWidth: CGFloat = (containerWidth - totalSpace) / colCount // 按照真实屏幕算出的cell宽度 （iPhone6 375*667）93.75
     let fixValue: CGFloat = 1 / UIScreen.main.scale // (1px=0.5pt, 6Plus为3px=1pt)
@@ -537,7 +536,7 @@ func fixSlitWith(_ containerWidth: CGFloat, colCount: CGFloat, space: CGFloat) -
     return realItemWidth // 每个cell的真实宽度
 }
 
-func fixSlitWithRect(rect: inout CGRect, colCount: CGFloat, space: CGFloat) -> CGFloat {
+public func fixSlitWithRect(rect: inout CGRect, colCount: CGFloat, space: CGFloat) -> CGFloat {
     let containerWidth = rect.width
     let totalSpace: CGFloat = (colCount - 1) * space // 总共留出的距离
     let realItemWidth = fixSlitWith(containerWidth, colCount: colCount, space: space)
@@ -551,21 +550,21 @@ func fixSlitWithRect(rect: inout CGRect, colCount: CGFloat, space: CGFloat) -> C
 
 // MARK: - 角度转弧度
 
-func radians_to_degrees(_ radians: CGFloat) -> CGFloat {
+public func radians_to_degrees(_ radians: CGFloat) -> CGFloat {
     let result = Double(radians) * (180.0 / Double.pi)
     return CGFloat(result)
 }
 
 // MARK: - 弧度转角度
 
-func degrees_to_radians(_ angle: CGFloat) -> CGFloat {
+public func degrees_to_radians(_ angle: CGFloat) -> CGFloat {
     let result = Double(angle) / 180.0 * Double.pi
     return CGFloat(result)
 }
 
 // MARK: - 图片按宽度裁剪
 
-func imageCompressForWidth(_ sourceImage: UIImage, targetWidth: CGFloat) -> UIImage {
+public func imageCompressForWidth(_ sourceImage: UIImage, targetWidth: CGFloat) -> UIImage {
     let imageSize = sourceImage.size
     let width = imageSize.width
     let height = imageSize.height
@@ -580,7 +579,7 @@ func imageCompressForWidth(_ sourceImage: UIImage, targetWidth: CGFloat) -> UIIm
 
 // MARK: - 图片按高度裁剪
 
-func imageCompressForHeight(_ sourceImage: UIImage, targetHeight: CGFloat) -> UIImage {
+public func imageCompressForHeight(_ sourceImage: UIImage, targetHeight: CGFloat) -> UIImage {
     let imageSize = sourceImage.size
     let width = imageSize.width
     let height = imageSize.height

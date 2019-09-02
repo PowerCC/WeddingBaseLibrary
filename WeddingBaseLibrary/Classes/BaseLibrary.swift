@@ -1,3 +1,3 @@
-class BaseLibrary: NSObject {
+public class BaseLibrary: NSObject {
     
 }
